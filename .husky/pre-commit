@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "\033[36m Linting code... \033[0m"
+
+npx --no-install lint-staged
+
+sleep 0.3
+echo "\033[32m Linting passed! \033[0m"
+echo
+
+sleep 1

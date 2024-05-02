@@ -29,15 +29,13 @@
   "importOrderSortSpecifiers": true,
   "importOrderGroupNamespaceSpecifiers": true,
   "importOrderCaseInsensitive": true,
-  "jsdocParser": true,
-  "jsdocSingleLineComment": false,
   "jsdocSeparateReturnsFromParam": true,
   "jsdocSeparateTagGroups": true,
   "jsdocCapitalizeDescription": false,
-  "jsdocPrintWidth": 60,
+  "jsdocPrintWidth": 80,
   "overrides": [
     {
-      "files": [".prettierrc", ".eslintrc", ".babelrc"],
+      "files": [".prettierrc", ".eslintrc"],
       "options": {
         "parser": "json"
       }
