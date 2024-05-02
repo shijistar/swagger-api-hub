@@ -1,0 +1,45 @@
+<% 
+  // modified based on swagger-typescript-api v13.0.3
+%>
+// @ts-nocheck: No need to check generated files
+<% 
+const { utils, route, config, apiConfig, modelTypes } = it;
+const { _, pascalCase, require } = utils;
+const apiClassName = pascalCase(route.moduleName);
+const routes = route.routes;
+const dataContracts = _.map(modelTypes, "name");
+%>
+
+<% if (config.httpClientType === config.constants.HTTP_CLIENT.AXIOS) { %>
+  import type { AxiosInstance } from "axios";
+  import type { ApiConfig } from "<%~ config.httpClientFile ?? `./${config.fileNames.httpClient}` %>"; 
+<% } %>
+import { HttpClient, RequestParams, ContentType, HttpResponse } from "<%~ config.httpClientFile ?? `./${config.fileNames.httpClient}` %>";
+<% if (dataContracts.length) { %>
+import { <%~ dataContracts.join(", ") %> } from "./<%~ config.fileNames.dataContracts %>"
+<% } %>
+
+export class <%= apiClassName %>Class<SecurityDataType = unknown><% if (!config.singleHttpClient) { %> extends HttpClient<SecurityDataType> <% } %> {
+<% if(config.singleHttpClient) { %>
+  http: HttpClient<SecurityDataType>;
+
+  constructor (axiosInstance?: AxiosInstance, options: ApiConfig = {}) {
+    this.http = new HttpClient<SecurityDataType>(axiosInstance, {
+      <% if (config.crossOrigin) { %>
+      baseURL: "<%~ apiConfig.baseUrl.replace(/https:\/\/(.+?):443/, "https://$1") %>",
+      <% } else if (config.apiBase) { %>
+      baseURL: "<%~ config.apiBase %>",
+      <% } %>
+      ...options,
+    });
+  }
+<% } %>
+
+    <% for (const route of routes) { %>
+        <%~ includeFile('./procedure-call.ejs', { ...it, route }) %>
+    <% } %>
+}
+<% if (config.createApiInstance) { %>
+
+export const <%= apiClassName %> = new <%= apiClassName %>Class();
+<% } %>

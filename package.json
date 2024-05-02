@@ -1,0 +1,65 @@
+{
+  "name": "api-hub",
+  "version": "1.0.0-alpha.0",
+  "description": "Generate front-end access code for swagger backend services in one click",
+  "keywords": [
+    "OpenApi",
+    "swagger",
+    "api",
+    "codegen"
+  ],
+  "homepage": "https://github.com/shijistar/api-hub#readme",
+  "bugs": {
+    "url": "https://github.com/shijistar/api-hub/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shijistar/api-hub.git"
+  },
+  "license": "MIT",
+  "author": "李凤宝 <shijistar@gmail.com>",
+  "main": "index.js",
+  "bin": {
+    "api-hub": "./bin/api-hub.ts"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "templates",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "father build",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^5.0.2",
+    "colors": "^1.4.0",
+    "axios": "^1.6.8",
+    "commander": "^12.0.0",
+    "cross-spawn": "^7.0.3",
+    "prettier": "^3.2.5",
+    "signale": "^1.4.0",
+    "swagger-typescript-api": "^13.0.3",
+    "tsx": "^4.8.2"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "4.3.0",
+    "@types/cross-spawn": "^6.0.6",
+    "@types/node": "^20.12.7",
+    "@types/signale": "^1.4.7",
+    "@typescript-eslint/eslint-plugin": "^7.8.0",
+    "@typescript-eslint/parser": "^7.8.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-eslint-comments": "^3.2.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-prettier": "^5.1.3",
+    "father": "^4.4.0",
+    "husky": "^9.0.11",
+    "prettier-plugin-jsdoc": "^1.3.0",
+    "prettier-plugin-packagejson": "^2.5.0"
+  },
+  "packageManager": "pnpm@9.0.6+sha512.f6d863130973207cb7a336d6b439a242a26ac8068077df530d6a86069419853dc1ffe64029ec594a9c505a3a410d19643c870aba6776330f5cfddcf10a9c1617"
+}
