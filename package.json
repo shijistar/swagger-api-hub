@@ -1,6 +1,6 @@
 {
-  "name": "api-hub",
-  "version": "1.0.0-alpha.0",
+  "name": "swagger-api-hub",
+  "version": "1.0.0",
   "description": "Generate front-end access code for swagger backend services in one click",
   "keywords": [
     "OpenApi",
@@ -8,19 +8,19 @@
     "api",
     "codegen"
   ],
-  "homepage": "https://github.com/shijistar/api-hub#readme",
+  "homepage": "https://github.com/shijistar/swagger-api-hub#readme",
   "bugs": {
-    "url": "https://github.com/shijistar/api-hub/issues"
+    "url": "https://github.com/shijistar/swagger-api-hub/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shijistar/api-hub.git"
+    "url": "git+https://github.com/shijistar/swagger-api-hub.git"
   },
   "license": "MIT",
   "author": "李凤宝 <shijistar@gmail.com>",
   "main": "index.js",
   "bin": {
-    "api-hub": "./bin/api-hub.ts"
+    "swagger-api-hub": "./bin/swagger-api-hub.js"
   },
   "files": [
     "bin",

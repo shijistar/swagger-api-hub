@@ -1,11 +1,10 @@
-import type { ServiceConfig } from './cli/types';
+import type { ServiceConfig } from '../cli/types';
 
 const services: ServiceConfig[] = [
   {
     id: 'iam',
     name: 'User Management Service',
-    // url: 'https://api.example.com/iam/swagger/v3',
-    url: 'http://localhost:3000/api-spec.json',
+    url: 'https://api.example.com/iam/swagger/v3',
     output: './src/api/iam',
   },
   {

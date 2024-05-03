@@ -14,7 +14,7 @@ import type { ServiceConfig } from './types';
 
 const program = new commander.Command();
 
-process.title = 'api-hub-cli';
+process.title = 'swagger-api-hub-cli';
 
 program
   .name(Object.keys(packageJson.bin)[0])
@@ -23,7 +23,7 @@ program
   .argument(
     '[config-path]',
     'Path to the configuration file, if not specified, the default configuration file will be used',
-    './api-hub.config.ts'
+    './swagger-api-hub.config.ts'
   )
   .helpOption('-h, --help')
   .version(packageJson.version, '-v, --version')
