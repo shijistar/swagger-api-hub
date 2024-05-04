@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/shijistar/swagger-api-hub/compare/v1.1.0...v1.2.0) (2024-05-04)
+
+### Features
+
+- add dataTypeMapping options to custom mapping for int64 and object types ([28ed842](https://github.com/shijistar/swagger-api-hub/commit/28ed842fd8f8a7a444abcbf37acaa6999a8a3dc1))
+
 # [1.1.0](https://github.com/shijistar/swagger-api-hub/compare/v1.0.0...v1.1.0) (2024-05-04)
 
 ### Features

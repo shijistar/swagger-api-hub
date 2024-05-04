@@ -1,6 +1,6 @@
 {
   "name": "swagger-api-hub",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Generate front-end access code for swagger backend services in one click",
   "keywords": [
     "OpenApi",
