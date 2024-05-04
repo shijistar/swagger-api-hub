@@ -14,21 +14,24 @@ import type { ServiceConfig } from './types';
 
 const program = new commander.Command();
 
-process.title = 'swagger-api-hub-cli';
-
 program
   .name(Object.keys(packageJson.bin)[0])
   .description('Generate front-end interface code to interact with OpenAPI-based backend services')
   .usage('[options] [config-path]')
   .argument(
     '[config-path]',
-    'Path to the configuration file, if not specified, the default configuration file will be used',
+    'Path to the configuration file, if not specified, the default file path will be used',
     './swagger-api-hub.config.ts'
   )
   .helpOption('-h, --help')
   .version(packageJson.version, '-v, --version')
   .action(async (configPath) => {
-    const absPath = resolve(configPath);
+    let absPath: string;
+    try {
+      absPath = require.resolve(configPath);
+    } catch (error) {
+      absPath = resolve(configPath);
+    }
     if (!existsSync(absPath)) {
       signale.fatal('Config file not found:', configPath);
       process.exit(1);
@@ -36,9 +39,8 @@ program
 
     let config: ServiceConfig[] | ServiceConfig;
     try {
-      // support both module files and json files
       // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const originalConfig = require(resolve(configPath));
+      const originalConfig = require(absPath);
       config = originalConfig?.default ?? originalConfig;
     } catch (error) {
       signale.fatal(`Config file parse error (${configPath}):`, error);

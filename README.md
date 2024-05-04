@@ -30,7 +30,9 @@ $ swagger-api-hub
 $ swagger-api-hub config/services.ts
 ```
 
-The configuration file should export an array of `ServiceConfig` objects. If you export only one object, it will generate the code directly without prompting. The config file extension can be `.ts`, `.js`, `.json`, or any other module types supported by Node.js.
+The configuration file should export an array of `ServiceConfig` objects. If you export only one object, it will generate the code directly without prompting.
+
+The config file can be either local path or npm module path, and the file extension can be `.ts`, `.js`, `.json`, or any other module types supported by Node.js.
 
 The file should look like this:
 
@@ -61,7 +63,7 @@ The `ServiceConfig` object has the following properties:
 
 - `id`: _[required]_ A unique identifier for the service.
 - `name`: A human-readable name for the service.
-- `url`: _[required]_ The URL of the OpenAPI specification file. If you have a local file, you can use `input` instead of `url` to specify the file path. Or you can even use `spec` to provide the OpenAPI specification object directly. Either `url`, `input`, or `spec` is required.
+- `url`: _[required]_ The URL of the OpenAPI specification file. If you have a local file, you can use `input` instead of `url` to specify the file path. Or you can even use `spec` to provide the OpenAPI specification object directly. Either url, input, or spec is required.
 - `apiBase`: The base path of all API endpoints. The service may be hosted on a subpath of the main domain, e.g., _/public-api/iam/v3_, then the apiBase is _/public-api_ in this case. If the original api path from the OpenAPI specification is acceptable, you don't need this field.
 - `crossOrigin`: Whether to use the absolute api path when calling the service. This is useful when the service is hosted on a different domain and you need to set the `Access-Control-Allow-Origin` header. Default is `false`.
 - `output`: The output directory for the generated code. The default is `./src/api/{id}`.

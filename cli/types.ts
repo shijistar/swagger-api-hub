@@ -1,9 +1,12 @@
 import type { GenerateApiParams } from 'swagger-typescript-api';
 
+/**
+ * The configuration of a service.
+ */
 export type ServiceConfig = GenerateApiParams & {
-  /** the unique id of service */
+  /** The unique id of service */
   id: string;
-  /** the friendly name of service */
+  /** The friendly name of service */
   name?: string;
   /**
    * The base path of all API endpoints.

@@ -1,7 +1,14 @@
-# 1.0.0-alpha.0 (2024-05-02)
+# [1.1.0](https://github.com/shijistar/swagger-api-hub/compare/v1.0.0...v1.1.0) (2024-05-04)
 
 ### Features
 
-- add commitlint ([fba1adf](https://github.com/shijistar/swagger-api-hub/commit/fba1adfc3d440c7b5b2c24eb2514053ae8d4556b))
-- add husky and lint-staged ([d58e331](https://github.com/shijistar/swagger-api-hub/commit/d58e3318e48df67dcbe63df4e9287d810d531bae))
-- add main implementation of swagger-api-hub ([63af1d3](https://github.com/shijistar/swagger-api-hub/commit/63af1d3b545d1f403928067130d3db7b077561ad))
+- config file support reading from npm module ([a738538](https://github.com/shijistar/swagger-api-hub/commit/a738538c9abc0c26d0cee1d9ba4c63a65e1e87e4))
+
+# 1.0.0 (2024-05-03)
+
+### Features
+
+- add commitlint ([d2fe275](https://github.com/shijistar/swagger-api-hub/commit/d2fe275d8296913a395eefdd53974722aa74af90))
+- add husky and lint-staged ([9bc1c7e](https://github.com/shijistar/swagger-api-hub/commit/9bc1c7ef913ee079a7acff05ef6e50abc9b9016c))
+- add main implementation of swagger-api-hub ([37c71fc](https://github.com/shijistar/swagger-api-hub/commit/37c71fc1a934ad901c6de7da68bc145e2d12817d))
+- change name to swagger-api-hub ([38f735c](https://github.com/shijistar/swagger-api-hub/commit/38f735cf19f903ddb47d331a1d11df2e9fc4e8b2))
