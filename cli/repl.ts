@@ -53,13 +53,15 @@ program
       validateConfig(config);
     }
 
-    let result: GenerateApiOutput;
+    let result: GenerateApiOutput | undefined;
     if (Array.isArray(config)) {
       result = await generateWithPrompt(config);
     } else {
       result = await generate(config);
     }
-    signale.success('Code is generated to ', result.configuration.config.output);
+    if (result && !result.configuration.config.silent) {
+      signale.success('Code is generated to ', result.configuration.config.output);
+    }
   });
 
 program.parse(process.argv);

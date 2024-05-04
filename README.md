@@ -66,6 +66,7 @@ The `ServiceConfig` object has the following properties:
 - `url`: _[required]_ The URL of the OpenAPI specification file. If you have a local file, you can use `input` instead of `url` to specify the file path. Or you can even use `spec` to provide the OpenAPI specification object directly. Either url, input, or spec is required.
 - `apiBase`: The base path of all API endpoints. The service may be hosted on a subpath of the main domain, e.g., _/public-api/iam/v3_, then the apiBase is _/public-api_ in this case. If the original api path from the OpenAPI specification is acceptable, you don't need this field.
 - `crossOrigin`: Whether to use the absolute api path when calling the service. This is useful when the service is hosted on a different domain and you need to set the `Access-Control-Allow-Origin` header. Default is `false`.
+- `dataTypeMappings`: A map of some special data types to TypeScript types. The default is `{ int64: 'BigInt', object: 'Record<string, any>' }`.
 - `output`: The output directory for the generated code. The default is `./src/api/{id}`.
 - `httpClientFile`: Change the default path of `http-client.ts` file, so you can use your own http client. The default is `./http-client` under each service directory.
 - `createApiInstance`: Whether to create an instance of each API class. The instance can only be created with an empty constructor, if you want to set different options for some api classes, you can set this to `false` and create the instance manually. Default is `true`.

@@ -26,4 +26,15 @@ export type ServiceConfig = GenerateApiParams & {
   httpClientFile?: string;
   /** Auto create an instance for each api class */
   createApiInstance?: boolean;
+  /**
+   * Some custom data type mappings
+   */
+  dataTypeMappings?: {
+    /**
+     * @default "number"
+     */
+    int64?: 'number' | 'string' | 'BigInt';
+    /** @default "object" */
+    object?: 'object' | 'Record<string, any>';
+  };
 };

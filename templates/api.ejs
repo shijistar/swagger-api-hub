@@ -19,6 +19,14 @@ import { HttpClient, RequestParams, ContentType, HttpResponse } from "<%~ config
 import { <%~ dataContracts.join(", ") %> } from "./<%~ config.fileNames.dataContracts %>"
 <% } %>
 
+/**
+<% if (config.moduleNameFirstTag) { %>
+  <%~ apiConfig.tags?.find(t => _.camelCase(t.name) === route.moduleName)?.description ?? route.moduleName %>
+<% } else { %>
+  <%~ apiConfig.info?.title %>
+<% } %>
+
+*/
 export class <%= apiClassName %>Class<SecurityDataType = unknown><% if (!config.singleHttpClient) { %> extends HttpClient<SecurityDataType> <% } %> {
 <% if(config.singleHttpClient) { %>
   http: HttpClient<SecurityDataType>;
