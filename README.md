@@ -1,5 +1,7 @@
 # swagger-api-hub
 
+![cover image](cover.webp)
+
 Produce front-end interface code for OpenAPI-based backend services with a single click. This tool is designed to generate TypeScript code for API clients and request methods from OpenAPI specifications. It can be used as a command line tool or as a Node.js module which is integrated into your build process. It supports both OpenAPI 2.0 and 3.0 specifications.
 
 This tool is a wrapper of the [swagger-typescript-api
