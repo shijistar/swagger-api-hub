@@ -10,7 +10,7 @@
 
 - config file support reading from npm module ([5bc9cda](https://github.com/shijistar/swagger-api-hub/commit/5bc9cdae5985099fbda60255e36b0ae202575579))
 
-# 1.0.0 (2024-05-03)
+# [1.0.0](https://github.com/shijistar/swagger-api-hub/compare/37c71fc1a934ad901c6de7da68bc145e2d12817d...v1.0.0) (2024-05-03)
 
 ### Features
 
