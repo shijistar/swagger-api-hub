@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/shijistar/swagger-api-hub/compare/v1.2.0...v1.2.1) (2024-05-06)
+
+### Bug Fixes
+
+- regular the ts-nocheck directive ([1b57906](https://github.com/shijistar/swagger-api-hub/commit/1b579068d6fb3ff5285e2f4cfec80705ef581f55))
+
 # [1.2.0](https://github.com/shijistar/swagger-api-hub/compare/v1.1.0...v1.2.0) (2024-05-04)
 
 ### Features
