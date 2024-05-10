@@ -2,20 +2,20 @@
 
 ![cover image](cover.webp)
 
-Produce front-end interface code for OpenAPI-based backend services with a single click. This tool is designed to generate TypeScript code for API clients and request methods from OpenAPI specifications. It can be used as a command line tool or as a Node.js module which is integrated into your build process. It supports both OpenAPI 2.0 and 3.0 specifications.
+Produce front-end interface code for OpenAPI-based backend services with a single click. This tool is designed to generate TypeScript code for API clients and request methods from OpenAPI specifications. It can be used as a command line tool or as a Node.js module that is integrated into your build process. It supports both OpenAPI 2.0 and 3.0 specifications.
 
 This tool is a wrapper of the [swagger-typescript-api
-](https://github.com/acacode/swagger-typescript-api).
+](https://github.com/acacode/swagger-typescript-api)
 
 ## Installation
 
-**Install as global command line tool:**
+**Install as a global command:**
 
 ```bash
 $ npm install -g swagger-api-hub
 ```
 
-**Install as project-wide dependency:**
+**Install as a project-wide dependency:**
 
 ```bash
 $ npm install -D swagger-api-hub
@@ -23,13 +23,13 @@ $ npm install -D swagger-api-hub
 
 ## Usage
 
-#### Use as global command line tool:
+### Use as a global command
 
 It reads the default configuration file `./swagger-api-hub.config.ts`, you can also specify a custom configuration file.
 
 ```bash
-$ swagger-api-hub
-$ swagger-api-hub config/services.ts
+$ swagger-api-hub  # read default config file
+$ swagger-api-hub ./configs/custom-config.ts  # specify a custom config file
 ```
 
 The configuration file should export an array of `ServiceConfig` objects. If you export only one object, it will generate the code directly without prompting.
@@ -61,29 +61,30 @@ const services: ServiceConfig[] = [
 export default services;
 ```
 
-The `ServiceConfig` object has the following properties:
+The `ServiceConfig` object has the following fields:
 
-- `id`: _[required]_ A unique identifier for the service.
-- `name`: A human-readable name for the service.
-- `url`: _[required]_ The URL of the OpenAPI specification file. If you have a local file, you can use `input` instead of `url` to specify the file path. Or you can even use `spec` to provide the OpenAPI specification object directly. Either url, input, or spec is required.
-- `apiBase`: The base path of all API endpoints. The service may be hosted on a subpath of the main domain, e.g., _/public-api/iam/v3_, then the apiBase is _/public-api_ in this case. If the original api path from the OpenAPI specification is acceptable, you don't need this field.
-- `crossOrigin`: Whether to use the absolute api path when calling the service. This is useful when the service is hosted on a different domain and you need to set the `Access-Control-Allow-Origin` header. Default is `false`.
-- `dataTypeMappings`: A map of some special data types to TypeScript types. The default is `{ int64: 'BigInt', object: 'Record<string, any>' }`.
-- `output`: The output directory for the generated code. The default is `./src/api/{id}`.
-- `httpClientFile`: Change the default path of `http-client.ts` file, so you can use your own http client. The default is `./http-client` under each service directory.
-- `createApiInstance`: Whether to create an instance of each API class. The instance can only be created with an empty constructor, if you want to set different options for some api classes, you can set this to `false` and create the instance manually. Default is `true`.
-- For more options, please refer to the [swagger-typescript-api#options](https://github.com/acacode/swagger-typescript-api?tab=readme-ov-file#-options) documentation.
+- **`id`**: _[required]_ A unique identifier for the service.
+- **`name`**: A human-readable name for the service.
+- **`url`**: _[required]_ The URL of the OpenAPI specification file. If you have a local file, you can use `input` instead of `url` to specify the file path. Or you can even use `spec` to provide the OpenAPI specification object directly. Either url, input, or spec is required.
+- **`apiBase`**: The base path of all API endpoints. The service may be hosted on a subpath of the main domain, e.g., `/public-api/iam/v3`, then the apiBase is `/public-api` in this case. If the original api path from the OpenAPI specification is acceptable, you don't need this field.
+- **`crossOrigin`**: Whether to use the absolute api path when calling the service. This is useful when the service is hosted on a different domain and you need to set the `Access-Control-Allow-Origin` header. Default is `false`.
+- **`dataTypeMappings`**: A map of some special data types to TypeScript types. Default is `{ int64: 'BigInt', object: 'Record<string, any>' }`.
+- **`output`**: The output directory for the generated code. Default is `./src/api/{id}`.
+- **`httpClientFile`**: Change the default path of `http-client.ts` file, so you can use your own http client. Default is `./http-client` of each service directory.
+- **`createApiInstance`**: Whether to create an instance of each API class. The instance can only be created with an empty constructor, if you want to set different options for some api classes, you can set this to `false` and create the instance manually. Default is `true`.
 
-#### Use as npm dependency:
+For more options, please refer to the [swagger-typescript-api#options](https://github.com/acacode/swagger-typescript-api?tab=readme-ov-file#-options) documentation.
+
+### Use as a npm dependency
 
 ```typescript
 import { generate, promptToGenerate } from 'swagger-api-hub';
 import type { ServiceConfig } from 'swagger-api-hub';
-import services from './swagger-api-hub.config';
+import serviceConfigs from './swagger-api-hub.config';
 
-// Way1: Generate multiple services with prompts
-promptToGenerate(services);
+// Usage1: generate multiple services with prompts
+promptToGenerate(serviceConfigs);
 
-// Way2: Generate a single service directly
-generate(services[0]);
+// Usage2: generate a single service directly
+generate(serviceConfigs[0]);
 ```
