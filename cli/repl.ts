@@ -1,9 +1,4 @@
-import type {
-  GenerateApiOutput,
-  GenerateApiParamsFromPath,
-  GenerateApiParamsFromSpecLiteral,
-  GenerateApiParamsFromUrl,
-} from 'swagger-typescript-api';
+import type { GenerateApiOutput } from 'swagger-typescript-api';
 import commander from 'commander';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
@@ -29,7 +24,7 @@ program
     let absPath: string;
     try {
       absPath = require.resolve(configPath);
-    } catch (error) {
+    } catch {
       absPath = resolve(configPath);
     }
     if (!existsSync(absPath)) {
@@ -39,7 +34,7 @@ program
 
     let config: ServiceConfig[] | ServiceConfig;
     try {
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      // eslint-disable-next-line  @typescript-eslint/no-require-imports
       const originalConfig = require(absPath);
       config = originalConfig?.default ?? originalConfig;
     } catch (error) {
@@ -73,9 +68,9 @@ function validateConfig(config: ServiceConfig, index?: number) {
     process.exit(1);
   }
   if (
-    !(config as GenerateApiParamsFromUrl).url &&
-    !(config as GenerateApiParamsFromPath).input &&
-    !(config as GenerateApiParamsFromSpecLiteral).spec
+    (!('url' in config) || !config.url) &&
+    (!('input' in config) || !config.input) &&
+    (!('spec' in config) || !config.spec)
   ) {
     signale.fatal(`[${config.id}] config is invalid: either url, input or spec is required`);
     process.exit(1);
