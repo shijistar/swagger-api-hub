@@ -1,24 +1,27 @@
 # swagger-api-hub
 
+[![npm version](https://img.shields.io/npm/v/swagger-api-hub.svg)](https://www.npmjs.com/package/swagger-api-hub)
+[![npm downloads](https://img.shields.io/npm/dm/swagger-api-hub.svg)](https://www.npmjs.com/package/swagger-api-hub)
+![GitHub License](https://img.shields.io/github/license/shijistar/swagger-api-hub?label=License&color=%23F68F1E)
+
 ![cover image](cover.webp)
 
 Produce front-end interface code for OpenAPI-based backend services with a single click. This tool is designed to generate TypeScript code for API clients and request methods from OpenAPI specifications. It can be used as a command line tool or as a Node.js module that is integrated into your build process. It supports both OpenAPI 2.0 and 3.0 specifications.
 
-This tool is a wrapper of the [swagger-typescript-api
-](https://github.com/acacode/swagger-typescript-api)
+This tool is a wrapper of the [swagger-typescript-api](https://github.com/acacode/swagger-typescript-api)
 
 ## Installation
 
 **Install as a global command:**
 
 ```bash
-$ npm install -g swagger-api-hub
+npm install -g swagger-api-hub
 ```
 
 **Install as a project-wide dependency:**
 
 ```bash
-$ npm install -D swagger-api-hub
+npm install -D swagger-api-hub
 ```
 
 ## Usage

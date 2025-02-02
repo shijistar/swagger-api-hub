@@ -1,4 +1,9 @@
-# swigger-api-hub
+## [1.2.3](https://github.com/shijistar/swagger-api-hub/compare/1.2.2...1.2.3) (2025-02-02)
+
+### Features
+
+- add intTotalElements option ([f8fd255](https://github.com/shijistar/swagger-api-hub/commit/f8fd25502fb2ea2ecbadeb029151f829a84920e6))
+- rename service instance variable ([8121fcc](https://github.com/shijistar/swagger-api-hub/commit/8121fcc2e537123d25a72d8b33725e23422dc021))
 
 ## [1.2.2](https://github.com/shijistar/swagger-api-hub/compare/1.2.1...1.2.2) (2025-01-16)
 
