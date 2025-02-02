@@ -24,8 +24,10 @@ export type ServiceConfig = GenerateApiParams & {
   singleHttpClient?: never;
   /** Change the default path of `http-client.ts` file, you can use your own http client */
   httpClientFile?: string;
-  /** Auto create an instance for each api class */
+  /** Auto create an instance for each api class. Default is `true` */
   createApiInstance?: boolean;
+  /** Whether to force convert `totalElements` to `number`(int32) type. Default is `false`. */
+  intTotalElements?: boolean;
   /**
    * Some custom data type mappings
    */

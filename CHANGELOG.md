@@ -1,3 +1,5 @@
+# swigger-api-hub
+
 ## [1.2.2](https://github.com/shijistar/swagger-api-hub/compare/1.2.1...1.2.2) (2025-01-16)
 
 - Upgrade all dependencies to latest version
