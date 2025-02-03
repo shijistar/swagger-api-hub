@@ -51,12 +51,14 @@ const services: ServiceConfig[] = [
     id: 'iam',
     name: 'User Management Service',
     url: 'https://api.example.com/iam/swagger/v3',
+    authorizationToken: 'Basic XXXXXXXXXXXXXXXXXX',
     output: './src/api/iam',
   },
   {
     id: 'asset',
     name: 'Asset Management Service',
     url: 'https://api.example.com/public-api/asset/swagger/v3',
+    authorizationToken: 'Basic XXXXXXXXXXXXXXXXXX',
     apiBase: '/public-api',
     output: './src/api/asset',
   },
@@ -75,6 +77,7 @@ The `ServiceConfig` object has the following fields:
 - **`output`**: The output directory for the generated code. Default is `./src/api/{id}`.
 - **`httpClientFile`**: Change the default path of `http-client.ts` file, so you can use your own http client. Default is `./http-client` of each service directory.
 - **`createApiInstance`**: Whether to create an instance of each API class. The instance can only be created with an empty constructor, if you want to set different options for some api classes, you can set this to `false` and create the instance manually. Default is `true`.
+- **`intTotalElements`**: Whether to force convert `totalElements` in dataContracts to `number`(int32) type. Default is `false`.
 
 For more options, please refer to the [swagger-typescript-api#options](https://github.com/acacode/swagger-typescript-api?tab=readme-ov-file#-options) documentation.
 
