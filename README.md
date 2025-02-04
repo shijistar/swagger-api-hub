@@ -1,7 +1,7 @@
-# swagger-api-hub
+# @tiny-codes/swagger-api-hub
 
-[![npm version](https://img.shields.io/npm/v/swagger-api-hub.svg)](https://www.npmjs.com/package/swagger-api-hub)
-[![npm downloads](https://img.shields.io/npm/dm/swagger-api-hub.svg)](https://www.npmjs.com/package/swagger-api-hub)
+[![npm version](https://img.shields.io/npm/v/@tiny-codes/swagger-api-hub.svg)](https://www.npmjs.com/package/@tiny-codes/swagger-api-hub)
+[![npm downloads](https://img.shields.io/npm/dm/%40tiny-codes%2Fswagger-api-hub.svg)](https://www.npmjs.com/package/@tiny-codes/swagger-api-hub)
 ![GitHub License](https://img.shields.io/github/license/shijistar/swagger-api-hub?label=License&color=%23F68F1E)
 
 ![cover image](cover.webp)
@@ -15,13 +15,13 @@ This tool is a wrapper of the [swagger-typescript-api](https://github.com/acacod
 **Install as a global command:**
 
 ```bash
-npm install -g swagger-api-hub
+npm install -g @tiny-codes/swagger-api-hub
 ```
 
 **Install as a project-wide dependency:**
 
 ```bash
-npm install -D swagger-api-hub
+npm install -D @tiny-codes/swagger-api-hub
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ The file should look like this:
 _swagger-api-hub.config.ts_
 
 ```typescript
-import type { ServiceConfig } from 'swagger-api-hub';
+import type { ServiceConfig } from '@tiny-codes/swagger-api-hub';
 
 const services: ServiceConfig[] = [
   {
@@ -84,8 +84,8 @@ For more options, please refer to the [swagger-typescript-api#options](https://g
 ### Use as a npm dependency
 
 ```typescript
-import { generate, promptToGenerate } from 'swagger-api-hub';
-import type { ServiceConfig } from 'swagger-api-hub';
+import { generate, promptToGenerate } from '@tiny-codes/swagger-api-hub';
+import type { ServiceConfig } from '@tiny-codes/swagger-api-hub';
 import serviceConfigs from './swagger-api-hub.config';
 
 // Usage1: generate multiple services with prompts
