@@ -21,7 +21,7 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "bin": {
-    "swagger-api-hub": "./bin/swagger-api-hub.js"
+    "swagger-api-hub": "bin/swagger-api-hub.js"
   },
   "files": [
     "bin",
