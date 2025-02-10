@@ -19,11 +19,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       # Uncomment the following line if you want to run tests
       # - name: Run tests
@@ -42,11 +39,8 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      - name: Install pnpm
-        run: npm install -g pnpm
-
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm ci
 
       - name: Publish to npm
         run: npm publish --access=public
