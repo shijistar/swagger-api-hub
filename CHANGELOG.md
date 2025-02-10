@@ -1,3 +1,9 @@
+## [1.2.4](https://github.com/shijistar/swagger-api-hub/compare/v1.2.3_tinycodes...v1.2.4) (2025-02-10)
+
+### Features
+
+- manage dev config and code style by @tiny-codes/code-style-all-in-one ([67282e6](https://github.com/shijistar/swagger-api-hub/commit/67282e64b73b59266e702b8052ea6a662e22c6f8))
+
 ## [1.2.3](https://github.com/shijistar/swagger-api-hub/compare/1.2.2...1.2.3) (2025-02-02)
 
 ### Features
