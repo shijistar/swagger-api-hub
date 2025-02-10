@@ -1,4 +1,4 @@
-## [1.2.4](https://github.com/shijistar/swagger-api-hub/compare/v1.2.3_tinycodes...v1.2.4) (2025-02-10)
+## [1.2.5](https://github.com/shijistar/swagger-api-hub/compare/v1.2.3_tinycodes...v1.2.5) (2025-02-10)
 
 ### Features
 
