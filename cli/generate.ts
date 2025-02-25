@@ -1,13 +1,13 @@
+import { select } from '@inquirer/prompts';
+import { gray, magenta, yellow } from 'colors/safe';
+import { camelCase, startCase } from 'lodash';
+import { resolve } from 'path';
+import prettier from 'prettier';
+import signale from 'signale';
 import { generateApi } from 'swagger-typescript-api';
 import type { GenerateApiParams } from 'swagger-typescript-api';
 // @ts-ignore: TS7016 no declaration file
 import type { SchemaParser } from 'swagger-typescript-api/src/schema-parser/schema-parser';
-import { select } from '@inquirer/prompts';
-import { gray, magenta, yellow } from 'colors/safe';
-import { camelCase } from 'lodash';
-import { resolve } from 'path';
-import prettier from 'prettier';
-import signale from 'signale';
 import { rootDir } from './paths';
 import type { ServiceConfig } from './types';
 
@@ -17,49 +17,77 @@ const defaultDataMapping: Required<NonNullable<ServiceConfig['dataTypeMappings']
 };
 /**
  * Generate code for a swagger service
- * @param config the configuration for code generation
+ *
+ * @param userConfig the configuration for code generation
+ *
  * @returns the generated result
  */
-export async function generate(config: ServiceConfig) {
-  const { output = `./src/api/${config.id}`, dataTypeMappings, ...otherConfig } = config;
+export async function generate(userConfig: ServiceConfig) {
+  const { output = `./src/api/${userConfig.id}`, dataTypeMappings, ...otherConfig } = userConfig;
   // pass empty to let prettier auto detect from process.cwd()
   const prettierConfig = await prettier.resolveConfig('');
   const mappings: typeof defaultDataMapping = {
     ...defaultDataMapping,
     ...dataTypeMappings,
   };
-  const params: GenerateApiParams = {
+  const config: ServiceConfig = {
     modular: true,
     templates: resolve(rootDir, 'templates'),
     httpClientType: 'axios',
+    addTagNameToRoute: false,
     singleHttpClient: true,
     httpClientFile: './http-client.ts',
+    extractRequestParams: true,
+    extractRequestBody: true,
+    extractResponseBody: true,
     extractEnums: true,
     generateUnionEnums: true,
-    extractRequestParams: true,
     moduleNameFirstTag: true, // use Swagger tags to name service module files
     sortRoutes: true,
     createApiInstance: true,
     patch: true,
     output: output && resolve(output),
     cleanOutput: true,
+    prettier: {
+      ...prettierConfig,
+      // parser: config.toJS ? 'babel' : 'typescript',
+    },
+    ...otherConfig,
+  };
+  const configWithFunc: ServiceConfig = {
+    ...config,
     hooks: {
       onFormatRouteName(routeInfo, templateRouteName) {
-        if (routeInfo.operationId) {
-          // Remove the trailing numbers of route name. If there are still duplicated names in the same module,
-          // an increasing number will be appended to the name and a warning message will also be printed.
-          return camelCase(routeInfo.operationId).replace(/\d+$/, '');
+        if (config.moduleNameFirstTag && routeInfo?.operationId) {
+          // 如果一个模块中有重复的路由名（即方法名），会在路由名后面加上递增的数字，但如果开启了模块化，由于同一个模块中不存在重名的，
+          // 所以需要去掉路由名的末尾数字，避免数字变化导致变成一个新方法。但假如同一个模块中存在重名的，仍然会强制添加递增数字的，并且会打印警告信息
+          // If there are duplicate route names (i.e. method names) in a module, an increasing number will be added to the end
+          // of the route name, but if modularization is enabled, there are no duplicate names in the same module, so the number
+          // at the end of the route name needs to be removed to avoid the number change causing it to become a new method.
+          // However, if there are duplicate names in the same module, an increasing number will still be forcibly added,
+          // and a warning message will also be printed
+          if (config.addTagNameToRoute && routeInfo.tags?.length) {
+            return camelCase(routeInfo.operationId)
+              .replace(/\d+$/, '')
+              .replace(/^(.+?)(Using\w+)$/, `$1In${startCase(routeInfo.tags[0]).replace(/\s/g, '')}$2`);
+          } else {
+            return camelCase(routeInfo.operationId).replace(/\d+$/, '');
+          }
         }
         return templateRouteName;
+      },
+      onCreateRequestParams: (rawType) => {
+        console.log(rawType);
+        return rawType;
       },
     },
     primitiveTypeConstructs: (struct) => {
       return {
         ...struct,
-        /* 
-          type conversion: 
+        /*
+          type conversion:
             int32 -> number
-            int64 -> string | BigInt 
+            int64 -> string | BigInt
         */
         integer: {
           int32: (_schema: SchemaDef, parser: SchemaParser) => {
@@ -79,19 +107,16 @@ export async function generate(config: ServiceConfig) {
         },
       };
     },
-    prettier: {
-      ...prettierConfig,
-      // parser: config.toJS ? 'babel' : 'typescript',
-    },
-    ...otherConfig,
   };
 
-  return await generateApi(params);
+  return await generateApi(configWithFunc as GenerateApiParams);
 }
 
 /**
  * Generate code by choosing a service from a list
+ *
  * @param configList the list of services
+ *
  * @returns the generated result
  */
 export const generateWithPrompt = async function (configList: ServiceConfig[]) {
