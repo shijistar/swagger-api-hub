@@ -1,3 +1,9 @@
+## [1.2.6](https://github.com/shijistar/swagger-api-hub/compare/v1.2.5...v1.2.6) (2025-02-25)
+
+### Features
+
+- add addTagNameToRoute option ([cc58422](https://github.com/shijistar/swagger-api-hub/commit/cc5842207a712dc56277d94f2f8693e16b6f1312))
+
 ## [1.2.5](https://github.com/shijistar/swagger-api-hub/compare/v1.2.3_tinycodes...v1.2.5) (2025-02-10)
 
 ### Features
