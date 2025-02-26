@@ -58,7 +58,7 @@ export async function generate(userConfig: ServiceConfig) {
     ...config,
     hooks: {
       onFormatRouteName(routeInfo, templateRouteName) {
-        let result: string | undefined;
+        let result: string | undefined = templateRouteName;
         if (config.moduleNameFirstTag && routeInfo?.operationId) {
           // 如果一个模块中有重复的路由名（即方法名），会在路由名后面加上递增的数字，但如果开启了模块化，由于同一个模块中不存在重名的，
           // 所以需要去掉路由名的末尾数字，避免数字变化导致变成一个新方法。但假如同一个模块中存在重名的，仍然会强制添加递增数字的，并且会打印警告信息
@@ -75,7 +75,6 @@ export async function generate(userConfig: ServiceConfig) {
             result = camelCase(routeInfo.operationId).replace(/\d+$/, '');
           }
         }
-        result = templateRouteName;
         if (config.hooks?.onFormatRouteName) {
           result = config.hooks.onFormatRouteName(routeInfo, result);
         }
@@ -154,4 +153,9 @@ export const generateWithPrompt = async function (configList: ServiceConfig[]) {
     });
 };
 
-interface SchemaDef { type?: string; format?: string; name?: string; description?: string }
+interface SchemaDef {
+  type?: string;
+  format?: string;
+  name?: string;
+  description?: string;
+}
