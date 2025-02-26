@@ -1,3 +1,9 @@
+## [1.2.8](https://github.com/shijistar/swagger-api-hub/compare/v1.2.7...v1.2.8) (2025-02-26)
+
+### Bug Fixes
+
+- reoute name replacement issue ([380f55d](https://github.com/shijistar/swagger-api-hub/commit/380f55d9f15409107ae093298316f6e623b51ad5))
+
 ## [1.2.7](https://github.com/shijistar/swagger-api-hub/compare/v1.2.6...v1.2.7) (2025-02-26)
 
 ### Features
