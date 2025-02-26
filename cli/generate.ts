@@ -48,15 +48,17 @@ export async function generate(userConfig: ServiceConfig) {
     patch: true,
     output: output && resolve(output),
     cleanOutput: true,
+    ...otherConfig,
     prettier: {
       ...prettierConfig,
       // parser: config.toJS ? 'babel' : 'typescript',
+      ...otherConfig.prettier,
     },
-    ...otherConfig,
   };
   const configWithFunc: ServiceConfig = {
     ...config,
     hooks: {
+      ...config.hooks,
       onFormatRouteName(routeInfo, templateRouteName) {
         let result: string | undefined = templateRouteName;
         if (config.moduleNameFirstTag && routeInfo?.operationId) {
