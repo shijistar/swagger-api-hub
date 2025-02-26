@@ -1,3 +1,9 @@
+## [1.2.9](https://github.com/shijistar/swagger-api-hub/compare/v1.2.8...v1.2.9) (2025-02-26)
+
+### Features
+
+- allow customzing hooks ([996463b](https://github.com/shijistar/swagger-api-hub/commit/996463bf3fb5451492db77ffab9b5455cc51a782))
+
 ## [1.2.8](https://github.com/shijistar/swagger-api-hub/compare/v1.2.7...v1.2.8) (2025-02-26)
 
 ### Bug Fixes
