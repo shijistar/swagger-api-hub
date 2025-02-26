@@ -2,11 +2,11 @@ import { select } from '@inquirer/prompts';
 import { gray, magenta, yellow } from 'colors/safe';
 import { camelCase, startCase } from 'lodash';
 import { resolve } from 'path';
-import prettier from 'prettier';
+import { resolveConfig } from 'prettier';
 import signale from 'signale';
 import { generateApi } from 'swagger-typescript-api';
 import type { GenerateApiParams } from 'swagger-typescript-api';
-// @ts-ignore: TS7016 no declaration file
+// @ts-expect-error: TS7016 no declaration file
 import type { SchemaParser } from 'swagger-typescript-api/src/schema-parser/schema-parser';
 import { rootDir } from './paths';
 import type { ServiceConfig } from './types';
@@ -25,7 +25,7 @@ const defaultDataMapping: Required<NonNullable<ServiceConfig['dataTypeMappings']
 export async function generate(userConfig: ServiceConfig) {
   const { output = `./src/api/${userConfig.id}`, dataTypeMappings, ...otherConfig } = userConfig;
   // pass empty to let prettier auto detect from process.cwd()
-  const prettierConfig = await prettier.resolveConfig('');
+  const prettierConfig = await resolveConfig('');
   const mappings: typeof defaultDataMapping = {
     ...defaultDataMapping,
     ...dataTypeMappings,
@@ -58,6 +58,7 @@ export async function generate(userConfig: ServiceConfig) {
     ...config,
     hooks: {
       onFormatRouteName(routeInfo, templateRouteName) {
+        let result: string | undefined;
         if (config.moduleNameFirstTag && routeInfo?.operationId) {
           // 如果一个模块中有重复的路由名（即方法名），会在路由名后面加上递增的数字，但如果开启了模块化，由于同一个模块中不存在重名的，
           // 所以需要去掉路由名的末尾数字，避免数字变化导致变成一个新方法。但假如同一个模块中存在重名的，仍然会强制添加递增数字的，并且会打印警告信息
@@ -67,22 +68,22 @@ export async function generate(userConfig: ServiceConfig) {
           // However, if there are duplicate names in the same module, an increasing number will still be forcibly added,
           // and a warning message will also be printed
           if (config.addTagNameToRoute && routeInfo.tags?.length) {
-            return camelCase(routeInfo.operationId)
+            result = camelCase(routeInfo.operationId)
               .replace(/\d+$/, '')
               .replace(/^(.+?)(Using\w+)$/, `$1In${startCase(routeInfo.tags[0]).replace(/\s/g, '')}$2`);
           } else {
-            return camelCase(routeInfo.operationId).replace(/\d+$/, '');
+            result = camelCase(routeInfo.operationId).replace(/\d+$/, '');
           }
         }
-        return templateRouteName;
-      },
-      onCreateRequestParams: (rawType) => {
-        console.log(rawType);
-        return rawType;
+        result = templateRouteName;
+        if (config.hooks?.onFormatRouteName) {
+          result = config.hooks.onFormatRouteName(routeInfo, result);
+        }
+        return result;
       },
     },
     primitiveTypeConstructs: (struct) => {
-      return {
+      const result: typeof struct | undefined = {
         ...struct,
         /*
           type conversion:
@@ -106,6 +107,10 @@ export async function generate(userConfig: ServiceConfig) {
           },
         },
       };
+      if (config.primitiveTypeConstructs) {
+        return config.primitiveTypeConstructs(result);
+      }
+      return result;
     },
   };
 
@@ -149,4 +154,4 @@ export const generateWithPrompt = async function (configList: ServiceConfig[]) {
     });
 };
 
-type SchemaDef = { type?: string; format?: string; name?: string; description?: string };
+interface SchemaDef { type?: string; format?: string; name?: string; description?: string }
