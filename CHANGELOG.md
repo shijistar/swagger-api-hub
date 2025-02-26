@@ -1,3 +1,9 @@
+## [1.2.7](https://github.com/shijistar/swagger-api-hub/compare/v1.2.6...v1.2.7) (2025-02-26)
+
+### Features
+
+- allow hook override ([6ac5ec2](https://github.com/shijistar/swagger-api-hub/commit/6ac5ec2ef80f450cfeec28afbd8cce47fe9530f1))
+
 ## [1.2.6](https://github.com/shijistar/swagger-api-hub/compare/v1.2.5...v1.2.6) (2025-02-25)
 
 ### Features
