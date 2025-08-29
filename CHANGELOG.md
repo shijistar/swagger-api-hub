@@ -1,3 +1,9 @@
+## [1.2.10](https://github.com/shijistar/swagger-api-hub/compare/v1.2.9...v1.2.10) (2025-08-29)
+
+### Features
+
+- use bigint instead of BigInt ([1adec80](https://github.com/shijistar/swagger-api-hub/commit/1adec807c8e5e7dae9fdef5c44039a48aa8c685f))
+
 ## [1.2.9](https://github.com/shijistar/swagger-api-hub/compare/v1.2.8...v1.2.9) (2025-02-26)
 
 ### Features
