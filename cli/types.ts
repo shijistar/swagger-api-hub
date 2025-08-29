@@ -67,7 +67,7 @@ export type ServiceConfig = GenerateApiParams & {
    */
   dataTypeMappings?: {
     /** @default 'number' */
-    int64?: 'number' | 'string' | 'BigInt';
+    int64?: 'number' | 'string' | 'bigint';
     /** @default 'object' */
     object?: 'object' | 'Record<string, any>';
   };

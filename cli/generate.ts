@@ -12,7 +12,7 @@ import { rootDir } from './paths';
 import type { ServiceConfig } from './types';
 
 const defaultDataMapping: Required<NonNullable<ServiceConfig['dataTypeMappings']>> = {
-  int64: 'BigInt',
+  int64: 'bigint',
   object: 'Record<string, any>',
 };
 /**
