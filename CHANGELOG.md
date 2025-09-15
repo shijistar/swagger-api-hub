@@ -1,3 +1,9 @@
+## [1.2.11](https://github.com/shijistar/swagger-api-hub/compare/v1.2.10...v1.2.11) (2025-09-15)
+
+### Bug Fixes
+
+- better conversion to bigint ([f1df138](https://github.com/shijistar/swagger-api-hub/commit/f1df138031d241d5e8198a883423071549ed6b25))
+
 ## [1.2.10](https://github.com/shijistar/swagger-api-hub/compare/v1.2.9...v1.2.10) (2025-08-29)
 
 ### Features
