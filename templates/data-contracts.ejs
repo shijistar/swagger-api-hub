@@ -19,7 +19,7 @@ const buildGenerics = (contract) => {
 
 const formatContent = (content) => {
   if (config.intTotalElements) {
-    return content?.replace(/totalElements(\??)\:\s*(BigInt|string)([,;])/g, "totalElements$1: number$3");
+    return content?.replace(/totalElements(\??)\:\s*(bigint|BigInt|string)([,;])/g, "totalElements$1: number$3");
   }
   return content;
 }
