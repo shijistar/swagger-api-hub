@@ -6,5 +6,10 @@ export default defineConfig({
     output: 'lib',
     platform: 'node',
   },
+  esm: {
+    input: 'cli',
+    output: 'es',
+    platform: 'node',
+  },
   sourcemap: true,
 });

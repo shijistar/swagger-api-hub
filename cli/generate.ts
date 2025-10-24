@@ -1,6 +1,6 @@
 import { select } from '@inquirer/prompts';
 import { gray, magenta, yellow } from 'colors/safe';
-import { camelCase, startCase } from 'lodash';
+import { camelCase, startCase } from 'lodash-es';
 import { resolve } from 'path';
 import { resolveConfig } from 'prettier';
 import signale from 'signale';
