@@ -64,11 +64,11 @@ export type ServiceConfig = GenerateApiParams & {
    * **EN:** Some custom data type mappings
    *
    * **ZH:** 一些自定义数据类型映射
+   *
+   * @default {
+   *  int64: 'bigint',
+   *  object: 'Record<string, any>'
+   * }
    */
-  dataTypeMappings?: {
-    /** @default 'number' */
-    int64?: 'number' | 'string' | 'bigint';
-    /** @default 'object' */
-    object?: 'object' | 'Record<string, any>';
-  };
+  dataTypeMappings?: Record<string, string>;
 };
