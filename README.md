@@ -2,6 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/@tiny-codes/swagger-api-hub.svg)](https://www.npmjs.com/package/@tiny-codes/swagger-api-hub)
 [![npm downloads](https://img.shields.io/npm/dm/%40tiny-codes%2Fswagger-api-hub.svg)](https://www.npmjs.com/package/@tiny-codes/swagger-api-hub)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/shijistar/swagger-api-hub)
 ![GitHub License](https://img.shields.io/github/license/shijistar/swagger-api-hub?label=License&color=%23F68F1E)
 
 ![cover image](cover.webp)
