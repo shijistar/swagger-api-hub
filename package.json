@@ -1,6 +1,6 @@
 {
   "name": "@tiny-codes/swagger-api-hub",
-  "version": "1.2.11",
+  "version": "1.3.0",
   "description": "Generate front-end access code for swagger backend services in one click",
   "keywords": [
     "OpenApi",
@@ -31,30 +31,31 @@
     "CHANGELOG.md"
   ],
   "scripts": {
+    "api": "node ./bin/swagger-api-hub.js",
     "build": "father build",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
     "prepare": "husky",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@inquirer/prompts": "^7.3.2",
-    "axios": "^1.7.9",
+    "@inquirer/prompts": "^7.10.1",
+    "axios": "^1.13.2",
     "colors": "^1.4.0",
-    "commander": "^13.1.0",
+    "commander": "^14.0.2",
     "cross-spawn": "^7.0.6",
-    "lodash": "^4.17.21",
-    "prettier": "^3.5.2",
+    "lodash-es": "^4.17.22",
+    "prettier": "^3.7.4",
     "signale": "^1.4.0",
-    "swagger-typescript-api": "^13.0.23",
-    "tsx": "^4.19.3"
+    "swagger-typescript-api": "^13.2.16",
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
-    "@tiny-codes/code-style-all-in-one": "^1.1.3",
+    "@tiny-codes/code-style-all-in-one": "^1.1.5",
     "@types/cross-spawn": "^6.0.6",
-    "@types/lodash": "^4.17.15",
-    "@types/node": "^22.13.5",
+    "@types/lodash-es": "^4.17.12",
+    "@types/node": "^22.19.3",
     "@types/signale": "^1.4.7",
-    "father": "^4.5.2",
+    "father": "^4.6.10",
     "globals": "^15.15.0"
   }
 }
