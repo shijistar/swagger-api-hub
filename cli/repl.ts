@@ -1,8 +1,8 @@
-import type { GenerateApiOutput } from 'swagger-typescript-api';
 import commander from 'commander';
 import { existsSync } from 'fs';
 import { resolve } from 'path';
 import signale from 'signale';
+import type { generateApi } from 'swagger-typescript-api';
 import packageJson from '../package.json';
 import { generate, generateWithPrompt } from './generate';
 import type { ServiceConfig } from './types';
@@ -34,7 +34,7 @@ program
 
     let config: ServiceConfig[] | ServiceConfig;
     try {
-      // eslint-disable-next-line  @typescript-eslint/no-require-imports
+      // eslint-disable-next-line  @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires
       const originalConfig = require(absPath);
       config = originalConfig?.default ?? originalConfig;
     } catch (error) {
@@ -48,7 +48,7 @@ program
       validateConfig(config);
     }
 
-    let result: GenerateApiOutput | undefined;
+    let result: Awaited<ReturnType<typeof generateApi>> | undefined;
     if (Array.isArray(config)) {
       result = await generateWithPrompt(config);
     } else {

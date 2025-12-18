@@ -1,16 +1,18 @@
-import type { ServiceConfig } from '../cli/types';
+import type { ServiceConfig } from '../cli';
 
-const services: ServiceConfig[] = [
-  {
-    id: 'iam',
-    name: 'User Management Service',
-    url: 'https://api.example.com/iam/swagger/v3',
-  },
-  {
-    id: 'asset',
-    name: 'Asset Management Service',
-    url: 'https://api.example.com/asset/swagger/v3',
-    apiBase: '/asset',
-  },
-];
-export default services;
+const commonConfig: Partial<ServiceConfig> = {
+  httpClientFile: '../request/swagger-request',
+};
+const service: ServiceConfig = {
+  ...commonConfig,
+  id: 'xspark',
+  name: 'XSpark Bff API',
+  output: './api/xspark',
+  url: 'https://xcloud-dev.lenovo.com/xspark/api/api-docs/v3',
+  authorizationToken: 'Basic YWRtaW46cXNjMSlyZ24=',
+  intTotalElements: true,
+  extractRequestBody: true,
+  extractRequestParams: false,
+  extractResponseBody: false,
+};
+export default service;

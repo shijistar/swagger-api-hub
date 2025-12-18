@@ -1,8 +1,7 @@
 import { select } from '@inquirer/prompts';
 import { gray, magenta, yellow } from 'colors/safe';
-import { camelCase, startCase } from 'lodash';
+import { camelCase, startCase } from 'lodash-es';
 import { resolve } from 'path';
-import { resolveConfig } from 'prettier';
 import signale from 'signale';
 import { generateApi } from 'swagger-typescript-api';
 import type { GenerateApiParams } from 'swagger-typescript-api';
@@ -22,10 +21,8 @@ const defaultDataMapping: Required<NonNullable<ServiceConfig['dataTypeMappings']
  *
  * @returns the generated result
  */
-export async function generate(userConfig: ServiceConfig) {
-  const { output = `./src/api/${userConfig.id}`, dataTypeMappings, ...otherConfig } = userConfig;
-  // pass empty to let prettier auto detect from process.cwd()
-  const prettierConfig = await resolveConfig('');
+export async function generate(userConfig: ServiceConfig): ReturnType<typeof generateApi> {
+  const { output = `./src/api/${userConfig.id}`, dataTypeMappings, ...restConfig } = userConfig;
   const mappings: typeof defaultDataMapping = {
     ...defaultDataMapping,
     ...dataTypeMappings,
@@ -48,12 +45,10 @@ export async function generate(userConfig: ServiceConfig) {
     patch: true,
     output: output && resolve(output),
     cleanOutput: true,
-    ...otherConfig,
-    prettier: {
-      ...prettierConfig,
-      // parser: config.toJS ? 'babel' : 'typescript',
-      ...otherConfig.prettier,
-    },
+    ...restConfig,
+    // Code formatting is handled by Biome instead of prettier since v13.1.0.
+    // To custom the configuration of Biome, please create a `biome.json` file in the project root directory.
+    // https://biomejs.dev/docs/configuration
   };
   const configWithFunc: ServiceConfig = {
     ...config,
@@ -125,7 +120,9 @@ export async function generate(userConfig: ServiceConfig) {
  *
  * @returns the generated result
  */
-export const generateWithPrompt = async function (configList: ServiceConfig[]) {
+export const generateWithPrompt = async function (
+  configList: ServiceConfig[]
+): Promise<Awaited<ReturnType<typeof generateApi>> | undefined> {
   const choices = configList.map((item) => ({
     value: item.id,
     name: `${item.id} ${gray(item.name ? `(${item.name})` : '')}`,
