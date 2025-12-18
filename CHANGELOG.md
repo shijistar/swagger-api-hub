@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/shijistar/swagger-api-hub/compare/v1.2.11...v1.3.0) (2025-12-18)
+
+### Features
+
+- update swagger-typescript-api to v13.2.16 ([ca36949](https://github.com/shijistar/swagger-api-hub/commit/ca36949))
+- change type declaration ([2cef0bc](https://github.com/shijistar/swagger-api-hub/commit/2cef0bce23b3d8e9ebf0f5edbcc61c78e8d3ac24))
+
 ## [1.2.11](https://github.com/shijistar/swagger-api-hub/compare/v1.2.10...v1.2.11) (2025-09-15)
 
 ### Bug Fixes
