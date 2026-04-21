@@ -1,6 +1,6 @@
 {
   "name": "@tiny-codes/swagger-api-hub",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Generate front-end access code for swagger backend services in one click",
   "keywords": [
     "OpenApi",
@@ -38,15 +38,15 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@inquirer/prompts": "^7.10.1",
-    "axios": "^1.13.2",
+    "@inquirer/prompts": "^8.4.2",
+    "axios": "^1.15.1",
     "colors": "^1.4.0",
-    "commander": "^14.0.2",
+    "commander": "^14.0.3",
     "cross-spawn": "^7.0.6",
-    "lodash-es": "^4.17.22",
-    "prettier": "^3.7.4",
+    "lodash-es": "^4.18.1",
+    "prettier": "^3.8.3",
     "signale": "^1.4.0",
-    "swagger-typescript-api": "^13.2.16",
+    "swagger-typescript-api": "^13.6.10",
     "tsx": "^4.21.0"
   },
   "devDependencies": {

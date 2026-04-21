@@ -79,7 +79,7 @@ export async function generate(userConfig: ServiceConfig): ReturnType<typeof gen
       },
     },
     primitiveTypeConstructs: (struct) => {
-      const result: typeof struct | undefined = {
+      const original: typeof struct | undefined = {
         ...struct,
         /*
           type conversion:
@@ -87,6 +87,7 @@ export async function generate(userConfig: ServiceConfig): ReturnType<typeof gen
             int64 -> string | BigInt
         */
         integer: {
+          ...(typeof struct.integer === 'object' ? struct.integer : {}),
           int32: (_schema: SchemaDef, parser: SchemaParser) => {
             return parser.config.Ts.Keyword.Number;
           },
@@ -97,16 +98,40 @@ export async function generate(userConfig: ServiceConfig): ReturnType<typeof gen
             return parser.config.Ts.Keyword.Number;
           },
         },
+        // object => Record<string, any>
         object: {
+          ...(typeof struct.object === 'object' ? struct.object : {}),
           $default: (_schema: SchemaDef, _parser: SchemaParser) => {
             return mappings.object;
           },
         },
       };
-      if (config.primitiveTypeConstructs) {
-        return config.primitiveTypeConstructs(result);
+      const configTypesMap = config.primitiveTypeConstructs;
+      if (configTypesMap) {
+        if (typeof configTypesMap === 'function') {
+          return configTypesMap(original);
+        } else {
+          // Merge result.primitiveTypeConstructs and config.primitiveTypeConstructs
+          return Object.keys(configTypesMap ?? {}).reduce(
+            (acc, key) => {
+              const originalItem = original[key as keyof typeof original];
+              const configItem = configTypesMap[key as keyof typeof configTypesMap];
+              if (configItem) {
+                if (typeof configItem === 'string') {
+                  acc[key as keyof typeof acc] = configItem;
+                } else if (typeof originalItem === 'string') {
+                  acc[key as keyof typeof acc] = configItem as unknown as typeof originalItem;
+                } else {
+                  acc[key as keyof typeof acc] = { ...originalItem, ...configItem } as typeof originalItem;
+                }
+              }
+              return acc;
+            },
+            { ...original }
+          );
+        }
       }
-      return result;
+      return original;
     },
   };
 
