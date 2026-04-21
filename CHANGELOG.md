@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/shijistar/swagger-api-hub/compare/v1.3.0...v1.3.1) (2026-04-21)
+
+### Features
+
+- upgrade `swagger-typescript-api` to `v13.6.10` and bump dependencies version ([6ec32fa](https://github.com/shijistar/swagger-api-hub/commit/6ec32fa0fc7c57d2762e8311479c35a7f26a8439))
+- update Prettier configuration and add JavaScript formatter options ([bc8d093](https://github.com/shijistar/swagger-api-hub/commit/bc8d093fa9adcd854d88b03ccccf2172d6d5cbf5))
+
 # [1.3.0](https://github.com/shijistar/swagger-api-hub/compare/v1.2.11...v1.3.0) (2025-12-18)
 
 ### Features
