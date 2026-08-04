@@ -1,0 +1,14 @@
+sample/swagger-api-hub.config.ts
+  h_99cad05bea77d1 8-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.20",
+  "base_commit_sha": "6589cb4c65585a31fca88a41030c124b6f58fffe",
+  "prompts": {},
+  "humans": {
+    "h_99cad05bea77d1": {
+      "author": "Fengbao Li <shijistar@gmail.com>"
+    }
+  }
+}
