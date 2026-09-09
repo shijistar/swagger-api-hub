@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { Button, Tabs, type TabsProps } from 'antd';
+import { CaretRightOutlined } from '@ant-design/icons';
 import { useStoryT } from '../../locales';
 
 export interface TerminalLine {
@@ -18,16 +20,16 @@ interface CliTerminalProps {
 }
 
 /**
- * A macOS-style terminal window that replays CLI output line by line. Switch scenes with the tabs,
+ * A macOS-style terminal window that replays CLI output line by line. Switch scenes with antd Tabs,
  * then press "Run" to replay the animation.
  */
 export const CliTerminal = ({ scenes, title = 'Terminal' }: CliTerminalProps) => {
   const t = useStoryT();
-  const [sceneIndex, setSceneIndex] = useState(0);
+  const [activeScene, setActiveScene] = useState(scenes[0]?.id);
   const [visibleCount, setVisibleCount] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const scene = scenes[sceneIndex] ?? scenes[0];
+  const scene = scenes.find((s) => s.id === activeScene) ?? scenes[0];
 
   useEffect(() => {
     return () => {
@@ -50,11 +52,13 @@ export const CliTerminal = ({ scenes, title = 'Terminal' }: CliTerminalProps) =>
   };
 
   // Reset the replay when the scene changes
-  const selectScene = (index: number) => {
+  const selectScene = (key: string) => {
     if (timerRef.current) clearInterval(timerRef.current);
-    setSceneIndex(index);
+    setActiveScene(key);
     setVisibleCount(0);
   };
+
+  const tabs: TabsProps['items'] = scenes.map((s) => ({ key: s.id, label: s.label }));
 
   const renderLine = (line: TerminalLine, key: number) => {
     switch (line.type) {
@@ -63,12 +67,6 @@ export const CliTerminal = ({ scenes, title = 'Terminal' }: CliTerminalProps) =>
           <div key={key}>
             <span className="prompt">$ </span>
             <span className="cmd">{line.text}</span>
-          </div>
-        );
-      case 'output':
-        return (
-          <div key={key} className="output">
-            {line.text}
           </div>
         );
       case 'success':
@@ -83,16 +81,17 @@ export const CliTerminal = ({ scenes, title = 'Terminal' }: CliTerminalProps) =>
             {line.text}
           </div>
         );
-      case 'select':
+      case 'dim':
         return (
-          <div key={key} className="output">
+          <div key={key} className="dim">
             {line.text}
           </div>
         );
-      case 'dim':
+      case 'output':
+      case 'select':
       default:
         return (
-          <div key={key} className="dim">
+          <div key={key} className="output">
             {line.text}
           </div>
         );
@@ -101,29 +100,29 @@ export const CliTerminal = ({ scenes, title = 'Terminal' }: CliTerminalProps) =>
 
   return (
     <div>
-      {scenes.length > 1 && (
-        <div className="sb-tabs">
-          {scenes.map((s, i) => (
-            <button
-              key={s.id}
-              type="button"
-              className={`sb-tab ${i === sceneIndex ? 'active' : ''}`}
-              onClick={() => selectScene(i)}
-            >
-              {s.label}
-            </button>
-          ))}
-        </div>
-      )}
+      <Tabs
+        size="small"
+        items={tabs}
+        activeKey={activeScene}
+        onChange={selectScene}
+        tabBarStyle={{ marginBottom: 12 }}
+      />
       <div className="sb-terminal">
         <div className="sb-terminal-header">
           <span className="sb-terminal-dot red" />
           <span className="sb-terminal-dot yellow" />
           <span className="sb-terminal-dot green" />
           <span className="sb-terminal-title">{title}</span>
-          <button type="button" className="sb-copy-button" style={{ marginLeft: 'auto' }} onClick={run}>
-            ▶ {t('story.demo.run')}
-          </button>
+          <Button
+            size="small"
+            type="primary"
+            ghost
+            icon={<CaretRightOutlined />}
+            className="sb-terminal-run"
+            onClick={run}
+          >
+            {t('story.demo.run')}
+          </Button>
         </div>
         <div className="sb-terminal-body">
           {scene.lines.slice(0, visibleCount).map((line, i) => renderLine(line, i))}

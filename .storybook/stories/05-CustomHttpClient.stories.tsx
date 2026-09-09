@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Table, type TableProps, Typography } from 'antd';
 import { CodeBlock } from '../components/CodeBlock';
 import { useStoryT } from '../locales';
 
@@ -102,54 +103,68 @@ export class UserController<SecurityDataType = unknown> {
     });
 }`;
 
-const defaultsRows: Array<[string, string, string]> = [
-  ['baseURL', '—（相对路径）', 'VITE_APP_API_BASE_URL（环境变量）'],
-  ['timeout', 'axios 默认 0（不超时）', '30_000'],
-  ['headers', '无公共头', "X-Requested-With: 'XMLHttpRequest'"],
-  ['path', '原样请求', '去掉 /v1/open 前缀'],
-  ['响应处理', '直接返回', 'afterParseResponse 后处理（可选）'],
+interface DefaultsRow {
+  property: string;
+  default: string;
+  custom: string;
+}
+
+const defaultsData: DefaultsRow[] = [
+  { property: 'baseURL', default: '—（相对路径）', custom: 'VITE_APP_API_BASE_URL（环境变量）' },
+  { property: 'timeout', default: 'axios 默认 0（不超时）', custom: '30_000' },
+  { property: 'headers', default: '无公共头', custom: "X-Requested-With: 'XMLHttpRequest'" },
+  { property: 'path', default: '原样请求', custom: '去掉 /v1/open 前缀' },
+  { property: '响应处理', default: '直接返回', custom: 'afterParseResponse 后处理（可选）' },
 ];
 
 const CustomHttpClientContent = () => {
   const t = useStoryT();
+
+  const tableColumns: TableProps<DefaultsRow>['columns'] = [
+    {
+      title: t('story.customHttp.defaultsProperty'),
+      dataIndex: 'property',
+      key: 'property',
+      render: (value: string) => <Typography.Text code>{value}</Typography.Text>,
+    },
+    {
+      title: t('story.customHttp.defaultsDefault'),
+      dataIndex: 'default',
+      key: 'default',
+    },
+    {
+      title: t('story.customHttp.defaultsCustom'),
+      dataIndex: 'custom',
+      key: 'custom',
+    },
+  ];
+
   return (
     <div className="sb-story-container">
       <div className="sb-section">
-        <div className="sb-section-title">{t('story.customHttp.sectionConfig')}</div>
-        <p className="sb-desc">{t('story.customHttp.sectionConfigDesc')}</p>
+        <Typography.Title level={5}>{t('story.customHttp.sectionConfig')}</Typography.Title>
+        <Typography.Paragraph type="secondary">{t('story.customHttp.sectionConfigDesc')}</Typography.Paragraph>
         <CodeBlock code={configCode} />
       </div>
       <div className="sb-section">
-        <div className="sb-section-title">{t('story.customHttp.sectionClient')}</div>
-        <p className="sb-desc">{t('story.customHttp.sectionClientDesc')}</p>
+        <Typography.Title level={5}>{t('story.customHttp.sectionClient')}</Typography.Title>
+        <Typography.Paragraph type="secondary">{t('story.customHttp.sectionClientDesc')}</Typography.Paragraph>
         <CodeBlock code={clientCode} maxHeight={520} />
       </div>
       <div className="sb-section">
-        <div className="sb-section-title">{t('story.customHttp.defaultsTitle')}</div>
-        <table className="sb-defaults-table">
-          <thead>
-            <tr>
-              <th>{t('story.customHttp.defaultsProperty')}</th>
-              <th>{t('story.customHttp.defaultsDefault')}</th>
-              <th>{t('story.customHttp.defaultsCustom')}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {defaultsRows.map(([prop, def, custom]) => (
-              <tr key={prop}>
-                <td>
-                  <code>{prop}</code>
-                </td>
-                <td>{def}</td>
-                <td>{custom}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Typography.Title level={5}>{t('story.customHttp.defaultsTitle')}</Typography.Title>
+        <Table<DefaultsRow>
+          size="small"
+          rowKey="property"
+          columns={tableColumns}
+          dataSource={defaultsData}
+          pagination={false}
+          bordered
+        />
       </div>
       <div className="sb-section">
-        <div className="sb-section-title">{t('story.customHttp.sectionUsage')}</div>
-        <p className="sb-desc">{t('story.customHttp.sectionUsageDesc')}</p>
+        <Typography.Title level={5}>{t('story.customHttp.sectionUsage')}</Typography.Title>
+        <Typography.Paragraph type="secondary">{t('story.customHttp.sectionUsageDesc')}</Typography.Paragraph>
         <CodeBlock code={usageCode} maxHeight={520} />
       </div>
     </div>

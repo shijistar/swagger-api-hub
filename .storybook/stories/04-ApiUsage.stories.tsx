@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Typography } from 'antd';
 import { CodeBlock } from '../components/CodeBlock';
 import { useStoryT } from '../locales';
 
@@ -23,8 +24,8 @@ const UsageContent = () => {
   return (
     <div className="sb-story-container">
       <div className="sb-section">
-        <div className="sb-section-title">{t('story.api.generate')}</div>
-        <p className="sb-desc">{t('story.api.generateDesc')}</p>
+        <Typography.Title level={5}>{t('story.api.generate')}</Typography.Title>
+        <Typography.Paragraph type="secondary">{t('story.api.generateDesc')}</Typography.Paragraph>
         <CodeBlock
           code={`${t('story.api.importLine')}
 import serviceConfigs from './swagger-api-hub.config';
@@ -34,8 +35,8 @@ generate(serviceConfigs[0]);`}
         />
       </div>
       <div className="sb-section">
-        <div className="sb-section-title">{t('story.api.promptToGenerate')}</div>
-        <p className="sb-desc">{t('story.api.promptToGenerateDesc')}</p>
+        <Typography.Title level={5}>{t('story.api.promptToGenerate')}</Typography.Title>
+        <Typography.Paragraph type="secondary">{t('story.api.promptToGenerateDesc')}</Typography.Paragraph>
         <CodeBlock
           code={`${t('story.api.importLine')}
 import serviceConfigs from './swagger-api-hub.config';
@@ -45,7 +46,7 @@ promptToGenerate(serviceConfigs);`}
         />
       </div>
       <div className="sb-section">
-        <div className="sb-section-title">{t('story.api.inlineSpec')}</div>
+        <Typography.Title level={5}>{t('story.api.inlineSpec')}</Typography.Title>
         <CodeBlock
           language="typescript"
           code={`import { generate } from '@tiny-codes/swagger-api-hub';

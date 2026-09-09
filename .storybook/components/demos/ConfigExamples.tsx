@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Tabs, type TabsProps, Typography } from 'antd';
 import { CodeBlock } from '../CodeBlock';
 
 export interface ConfigScenario {
@@ -14,30 +15,25 @@ interface ConfigExamplesProps {
 }
 
 /**
- * Tabbed ServiceConfig examples. Each tab shows a full config file with syntax highlighting and a
- * copy button.
+ * Tabbed ServiceConfig examples (antd Tabs). Each tab shows a full config file with syntax
+ * highlighting and a copy button.
  */
 export const ConfigExamples = ({ scenarios, fileName = 'swagger-api-hub.config.ts' }: ConfigExamplesProps) => {
-  const [active, setActive] = useState(0);
-  const scenario = scenarios[active] ?? scenarios[0];
+  const [active, setActive] = useState(scenarios[0]?.id);
+  const scenario = scenarios.find((s) => s.id === active) ?? scenarios[0];
+
+  const tabs: TabsProps['items'] = scenarios.map((s) => ({ key: s.id, label: s.label }));
 
   return (
     <div>
-      <div className="sb-tabs">
-        {scenarios.map((s, i) => (
-          <button
-            key={s.id}
-            type="button"
-            className={`sb-tab ${i === active ? 'active' : ''}`}
-            onClick={() => setActive(i)}
-          >
-            {s.label}
-          </button>
-        ))}
-      </div>
-      <p className="sb-tab-desc">{scenario.desc}</p>
+      <Tabs size="small" items={tabs} activeKey={active} onChange={setActive} tabBarStyle={{ marginBottom: 12 }} />
+      <Typography.Paragraph type="secondary" className="sb-tab-desc">
+        {scenario.desc}
+      </Typography.Paragraph>
       <CodeBlock code={scenario.code} language="typescript" maxHeight={480} />
-      <p className="sb-caption">{fileName}</p>
+      <Typography.Text type="secondary" className="sb-caption">
+        {fileName}
+      </Typography.Text>
     </div>
   );
 };

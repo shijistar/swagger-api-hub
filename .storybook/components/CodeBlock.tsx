@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { App, Button } from 'antd';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CheckOutlined, CopyOutlined } from '@ant-design/icons';
 import { useStoryT } from '../locales';
 
 interface CodeBlockProps {
@@ -11,11 +13,12 @@ interface CodeBlockProps {
 }
 
 /**
- * A theme-aware code block with a copy button, built on react-syntax-highlighter (same as the
+ * A theme-aware code block with an antd copy button, built on react-syntax-highlighter (same as the
  * jsoneo docs setup).
  */
 export const CodeBlock = ({ code, language = 'typescript', maxHeight = 480, className }: CodeBlockProps) => {
   const t = useStoryT();
+  const { message } = App.useApp();
   const [copied, setCopied] = useState(false);
   const isDark =
     typeof document !== 'undefined' &&
@@ -25,6 +28,7 @@ export const CodeBlock = ({ code, language = 'typescript', maxHeight = 480, clas
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
+      message.success(t('story.demo.copied'));
       setTimeout(() => setCopied(false), 1500);
     } catch {
       // clipboard unavailable in some sandboxed iframes
@@ -33,9 +37,15 @@ export const CodeBlock = ({ code, language = 'typescript', maxHeight = 480, clas
 
   return (
     <div className={`sb-code-panel ${className ?? ''}`}>
-      <button type="button" className={`sb-copy-button ${copied ? 'copied' : ''}`} onClick={handleCopy}>
+      <Button
+        size="small"
+        type="text"
+        className="sb-code-copy"
+        icon={copied ? <CheckOutlined /> : <CopyOutlined />}
+        onClick={handleCopy}
+      >
         {copied ? t('story.demo.copied') : t('story.demo.copy')}
-      </button>
+      </Button>
       <SyntaxHighlighter
         language={language}
         style={isDark ? oneDark : oneLight}
