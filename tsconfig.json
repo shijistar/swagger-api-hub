@@ -20,5 +20,5 @@
     "resolveJsonModule": true,
     "allowJs": false
   },
-  "exclude": ["lib"]
+  "exclude": ["lib", ".storybook"]
 }

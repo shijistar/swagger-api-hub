@@ -1,0 +1,34 @@
+/* Global styles for Storybook */
+:root {
+  --storybook-font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, oxygen, ubuntu, cantarell, sans-serif;
+  --storybook-code-font-family: 'SF Mono', 'Fira Code', 'Fira Mono', menlo, consolas, monospace;
+}
+
+html.dark,
+html[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+code,
+pre {
+  font-family: var(--storybook-code-font-family);
+}
+
+.sbdocs-content p,
+.sbdocs-content li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li),
+.sbdocs-content table:not(.sb-anchor, .sb-unstyled, .sb-unstyled table) {
+  /* stylelint-disable-next-line declaration-no-important */
+  font-size: 16px !important;
+}
+
+.sbdocs-content :where(pre:not(.sb-anchor, .sb-unstyled, .sb-unstyled pre)) pre,
+.sbdocs-content :where(pre:not(.sb-anchor, .sb-unstyled, .sb-unstyled pre)).prismjs,
+.sbdocs-content :where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) code {
+  /* stylelint-disable-next-line declaration-no-important */
+  font-size: 14px !important;
+}
+
+.sbdocs-content :where(h1:not(.sb-anchor, .sb-unstyled, .sb-unstyled h1)) {
+  /* stylelint-disable-next-line declaration-no-important */
+  margin-bottom: 16px !important;
+}

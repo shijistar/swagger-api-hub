@@ -25,6 +25,13 @@ npm install -g @tiny-codes/swagger-api-hub
 npm install -D @tiny-codes/swagger-api-hub
 ```
 
+## Documentation (Storybook)
+
+Interactive documentation and usage demos are available in the Storybook site:
+
+- Local development: `npm run storybook`
+- Static build: `npm run build-storybook`
+
 ## Usage
 
 ### Use as a global command

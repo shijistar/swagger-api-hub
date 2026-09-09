@@ -2,3 +2,6 @@ node_modules
 lib
 es
 src/api
+storybook-static/
+.storybook/docs/titles.json
+.storybook/stories/titles.json

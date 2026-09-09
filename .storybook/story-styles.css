@@ -1,0 +1,364 @@
+/* Story-specific styles */
+
+.sb-story-container {
+  max-width: 100%;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.sb-section {
+  margin-bottom: 1.5rem;
+}
+
+.sb-section-title {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.375rem;
+  color: #24292e;
+  font-weight: 600;
+  font-size: 1rem;
+  border-bottom: 1px solid #d0d7de;
+}
+
+html.dark .sb-section-title,
+html[data-theme='dark'] .sb-section-title {
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+.sb-desc {
+  margin-bottom: 1rem;
+  color: #57606a;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+html.dark .sb-desc,
+html[data-theme='dark'] .sb-desc {
+  color: #8b949e;
+}
+
+.sb-copy-button {
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.sb-copy-button:hover {
+  background: #e5e7eb;
+}
+
+.sb-copy-button.copied {
+  background: #dafbe1;
+  border-color: #86efac;
+}
+
+/* --- Terminal --- */
+.sb-terminal {
+  overflow: hidden;
+  font-family: var(--storybook-code-font-family);
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+}
+
+.sb-terminal-header {
+  display: flex;
+  gap: 0.375rem;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  background: #161b22;
+  border-bottom: 1px solid #30363d;
+}
+
+.sb-terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.sb-terminal-dot.red {
+  background: #ff5f56;
+}
+
+.sb-terminal-dot.yellow {
+  background: #ffbd2e;
+}
+
+.sb-terminal-dot.green {
+  background: #27c93f;
+}
+
+.sb-terminal-title {
+  margin-left: 0.5rem;
+  color: #8b949e;
+  font-size: 0.75rem;
+}
+
+.sb-terminal-body {
+  padding: 0.875rem 1rem;
+  color: #c9d1d9;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.sb-terminal-body .cmd-line {
+  color: #7ee787;
+}
+
+.sb-terminal-body .cmd {
+  color: #79c0ff;
+}
+
+.sb-terminal-body .prompt {
+  color: #f0883e;
+  font-weight: 600;
+}
+
+.sb-terminal-body .output {
+  color: #8b949e;
+}
+
+.sb-terminal-body .output.success {
+  color: #3fb950;
+}
+
+.sb-terminal-body .output.warn {
+  color: #d29922;
+}
+
+.sb-terminal-body .dim {
+  color: #484f58;
+}
+
+/* --- Tabbed code examples --- */
+.sb-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.sb-tab {
+  padding: 0.375rem 0.75rem;
+  color: #57606a;
+  font-size: 0.8125rem;
+  background: transparent;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sb-tab:hover {
+  background: #f6f8fa;
+}
+
+.sb-tab.active {
+  color: #fff;
+  font-weight: 600;
+  background: #f68f1e;
+  border-color: #f68f1e;
+}
+
+html.dark .sb-tab,
+html[data-theme='dark'] .sb-tab {
+  color: #8b949e;
+  border-color: #30363d;
+}
+
+html.dark .sb-tab:hover,
+html[data-theme='dark'] .sb-tab:hover {
+  background: #21262d;
+}
+
+.sb-tab-desc {
+  margin: -0.25rem 0 0.75rem;
+  color: #57606a;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+html.dark .sb-tab-desc,
+html[data-theme='dark'] .sb-tab-desc {
+  color: #8b949e;
+}
+
+.sb-code-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}
+
+html.dark .sb-code-panel,
+html[data-theme='dark'] .sb-code-panel {
+  border-color: #30363d;
+}
+
+.sb-code-panel .sb-copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+}
+
+.sb-code-panel pre {
+  max-height: 480px;
+  margin: 0;
+  padding: 0.875rem;
+  overflow: auto;
+  font-size: 0.8125rem;
+  font-family: var(--storybook-code-font-family);
+  line-height: 1.6;
+  background: #f6f8fa;
+}
+
+html.dark .sb-code-panel pre,
+html[data-theme='dark'] .sb-code-panel pre {
+  background: #161b22;
+}
+
+/* --- File tree --- */
+.sb-filetree {
+  padding: 0.875rem 1rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  font-family: var(--storybook-code-font-family);
+  line-height: 1.8;
+  white-space: pre;
+  background: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}
+
+html.dark .sb-filetree,
+html[data-theme='dark'] .sb-filetree {
+  color: #e6edf3;
+  background: #161b22;
+  border-color: #30363d;
+}
+
+.sb-filetree .dir {
+  color: #f0883e;
+}
+
+.sb-filetree .file {
+  color: #57606a;
+}
+
+html.dark .sb-filetree .file,
+html[data-theme='dark'] .sb-filetree .file {
+  color: #8b949e;
+}
+
+.sb-filetree .hl {
+  color: #24292e;
+  font-weight: 600;
+}
+
+html.dark .sb-filetree .hl,
+html[data-theme='dark'] .sb-filetree .hl {
+  color: #e6edf3;
+}
+
+.sb-caption {
+  margin-top: 0.5rem;
+  color: #57606a;
+  font-size: 0.75rem;
+}
+
+html.dark .sb-caption,
+html[data-theme='dark'] .sb-caption {
+  color: #8b949e;
+}
+
+.sb-defaults-table {
+  width: 100%;
+  overflow: hidden;
+  color: #24292e;
+  font-size: 0.8125rem;
+  text-align: left;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  border-collapse: collapse;
+}
+
+.sb-defaults-table th,
+.sb-defaults-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.sb-defaults-table th {
+  font-weight: 600;
+  background: #f6f8fa;
+}
+
+.sb-defaults-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sb-defaults-table td code {
+  padding: 0.125rem 0.375rem;
+  font-size: 0.75rem;
+  font-family: var(--storybook-code-font-family);
+  background: #f6f8fa;
+  border-radius: 4px;
+}
+
+html.dark .sb-defaults-table,
+html[data-theme='dark'] .sb-defaults-table {
+  color: #e6edf3;
+  border-color: #30363d;
+}
+
+html.dark .sb-defaults-table th,
+html[data-theme='dark'] .sb-defaults-table th {
+  background: #21262d;
+}
+
+html.dark .sb-defaults-table th,
+html[data-theme='dark'] .sb-defaults-table td,
+html.dark .sb-defaults-table,
+html[data-theme='dark'] .sb-defaults-table {
+  border-color: #30363d;
+}
+
+html.dark .sb-defaults-table td code,
+html[data-theme='dark'] .sb-defaults-table td code {
+  background: #21262d;
+}
+
+.sb-badge {
+  display: inline-block;
+  margin-right: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  border-radius: 4px;
+}
+
+.sb-badge.success {
+  color: #1a7f37;
+  background: #dafbe1;
+}
+
+html.dark .sb-badge.success,
+html[data-theme='dark'] .sb-badge.success {
+  color: #dafbe1;
+  background: #1a7f37;
+}
+
+.sb-badge.warning {
+  color: #9a6700;
+  background: #fff8c5;
+}
+
+html.dark .sb-badge.warning,
+html[data-theme='dark'] .sb-badge.warning {
+  color: #fff8c5;
+  background: #9a6700;
+}
