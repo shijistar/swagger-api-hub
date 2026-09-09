@@ -29,6 +29,7 @@ npm install -D @tiny-codes/swagger-api-hub
 
 Interactive documentation and usage demos are available in the Storybook site:
 
+- Online site: [https://shijistar.github.io/swagger-api-hub/](https://shijistar.github.io/swagger-api-hub/) (available after GitHub Pages is enabled)
 - Local development: `npm run storybook`
 - Static build: `npm run build-storybook`
 
