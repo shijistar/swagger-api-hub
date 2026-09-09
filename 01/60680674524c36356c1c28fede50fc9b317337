@@ -1,0 +1,15 @@
+.storybook/story-styles.css
+  h_99cad05bea77d1 17-23,26-29,32-36,39-41,44-51,54-55,58-60,76,141-194,199-200,207-263,285-368,370-405
+  h_99cad05bea77d1 195-198,201-206,264-265,369,406
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "0160680674524c36356c1c28fede50fc9b317337",
+  "prompts": {},
+  "humans": {
+    "h_99cad05bea77d1": {
+      "author": "Fengbao Li <shijistar@gmail.com>"
+    }
+  }
+}
