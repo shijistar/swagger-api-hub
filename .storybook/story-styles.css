@@ -221,6 +221,55 @@ html[data-theme='dark'] .sb-code-panel pre {
   background: #161b22;
 }
 
+html.dark .sb-preparing-story,
+html.dark .sb-preparing-docs,
+/* stylelint-disable-next-line selector-class-pattern */
+html.dark .sb-previewBlock,
+/* stylelint-disable-next-line selector-class-pattern */
+html.dark .sb-argstableBlock td,
+html[data-theme='dark'] .sb-preparing-story,
+html[data-theme='dark'] .sb-preparing-docs,
+/* stylelint-disable-next-line selector-class-pattern */
+html[data-theme='dark'] .sb-previewBlock,
+/* stylelint-disable-next-line selector-class-pattern */
+html[data-theme='dark'] .sb-argstableBlock td {
+  /* stylelint-disable-next-line declaration-no-important */
+  background-color: #1e1e1e !important;
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+html.dark .sb-previewBlock,
+/* stylelint-disable-next-line selector-class-pattern */
+html[data-theme='dark'] .sb-previewBlock {
+  border: 1px solid #ffffff4d;
+}
+/* stylelint-disable-next-line selector-class-pattern */
+html.dark .sb-previewBlock_header,
+/* stylelint-disable-next-line selector-class-pattern */
+html[data-theme='dark'] .sb-previewBlock_header {
+  box-shadow: #ffffff4d 0 -1px 0 0 inset;
+}
+/* stylelint-disable-next-line selector-class-pattern */
+html.dark .sb-argstableBlock-body,
+/* stylelint-disable-next-line selector-class-pattern */
+html[data-theme='dark'] .sb-argstableBlock-body {
+  box-shadow:
+    #ffffff4d 0 1px 3px 1px,
+    #ffffff23 0 0 0 1px;
+}
+/* stylelint-disable-next-line selector-class-pattern */
+html.dark .sb-argstableBlock-body tr:not(:first-child),
+/* stylelint-disable-next-line selector-class-pattern */
+html[data-theme='dark'] .sb-argstableBlock-body tr:not(:first-child) {
+  border-color: #ffffff4d;
+}
+/* stylelint-disable-next-line selector-class-pattern */
+html.dark .sb-argstableBlock th span, html.dark .sb-argstableBlock td span, html.dark .sb-argstableBlock-body button,
+/* stylelint-disable-next-line selector-class-pattern */
+html[data-theme='dark'] .sb-argstableBlock th span, html[data-theme='dark'] .sb-argstableBlock td span, html[data-theme='dark'] .sb-argstableBlock-body button {
+  background-color: #ffffff20;
+}
+
 /* --- File tree --- */
 .sb-filetree {
   padding: 0.875rem 1rem;
