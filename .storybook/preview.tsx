@@ -7,7 +7,6 @@ import { useStoryPageDecorator } from './components/useStoryPageDecorator';
 import { ensureStoryI18n } from './locales';
 import './global-styles.css';
 import './story-styles.css';
-// @ts-expect-error
 import 'antd/dist/reset.css';
 
 ensureStoryI18n();
