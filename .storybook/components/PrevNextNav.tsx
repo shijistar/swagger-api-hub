@@ -1,5 +1,6 @@
 import { type MouseEvent, useEffect, useState } from 'react';
 import { linkTo } from '@storybook/addon-links';
+import { theme } from 'antd';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { useStoryLocale, useStoryT } from '../locales';
 
@@ -36,6 +37,7 @@ export const PrevNextNav = ({ current, items }: PrevNextNavProps) => {
   const t = useStoryT();
   const isZh = useStoryLocale() === 'zh-CN';
   const idx = items.findIndex((item) => item.key === current);
+  const { token } = theme.useToken();
 
   // Pages outside the navigation chain (e.g. Changelog) show no navigation.
   if (idx === -1) {
@@ -61,7 +63,9 @@ export const PrevNextNav = ({ current, items }: PrevNextNavProps) => {
           <span className="sb-prevnext-direction">
             <ArrowLeftOutlined /> {t('story.prevnext.prev')}
           </span>
-          <span className="sb-prevnext-title">{label(prev)}</span>
+          <span className="sb-prevnext-title" style={{ color: token.colorText }}>
+            {label(prev)}
+          </span>
         </a>
       )}
       {next && (
@@ -69,7 +73,9 @@ export const PrevNextNav = ({ current, items }: PrevNextNavProps) => {
           <span className="sb-prevnext-direction">
             {t('story.prevnext.next')} <ArrowRightOutlined />
           </span>
-          <span className="sb-prevnext-title">{label(next)}</span>
+          <span className="sb-prevnext-title" style={{ color: token.colorText }}>
+            {label(next)}
+          </span>
         </a>
       )}
     </div>

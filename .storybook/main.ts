@@ -9,9 +9,6 @@ const config: StorybookConfig = {
     name: '@storybook/react-vite',
     options: {},
   },
-  docs: {
-    defaultName: 'Intro',
-  },
   async viteFinal(baseConfig) {
     return mergeConfig(baseConfig, {
       build: {
