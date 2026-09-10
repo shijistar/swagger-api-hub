@@ -5,11 +5,9 @@
   "storybook.preview.themeDescription": "主题",
   "storybook.preview.theme.light": "浅色",
   "storybook.preview.theme.dark": "深色",
-
   "story.demo.copy": "复制",
   "story.demo.copied": "已复制",
   "story.demo.run": "运行",
-
   "story.cli.title": "CLI 用法",
   "story.cli.description": "在终端中运行 swagger-api-hub。默认读取 ./swagger-api-hub.config.ts，也可以传入自定义配置文件路径。",
   "story.cli.scene.default": "默认配置",
@@ -23,7 +21,6 @@
   "story.cli.multiPrompt": "多个服务：交互式选择要生成的服务",
   "story.cli.singleDirect": "单个服务：直接生成，不弹出提示",
   "story.cli.terminalTitle": "终端",
-
   "story.config.title": "配置示例",
   "story.config.description": "配置文件导出单个 ServiceConfig 对象或对象数组。导出单个对象直接生成；导出数组会触发交互式选择提示。",
   "story.config.single": "单服务",
@@ -36,7 +33,6 @@
   "story.config.advancedDesc": "按服务定制类型映射、路由命名等。",
   "story.config.fileName": "swagger-api-hub.config.ts",
   "story.config.importLine": "import type { ServiceConfig } from '@tiny-codes/swagger-api-hub';",
-
   "story.generated.title": "生成结果",
   "story.generated.description": "基于示例配置生成的代码结构预览。使用模块化模板，文件输出到 output 目录。",
   "story.generated.fileTree": "输出结构",
@@ -47,7 +43,6 @@
   "story.generated.file.httpClient": "http-client.ts",
   "story.generated.file.routeTypes": "route-types.ts",
   "story.generated.generateAgain": "修改配置后重新运行 CLI 即可再次生成",
-
   "story.customHttp.title": "自定义 Http Client",
   "story.customHttp.description": "将 httpClientFile 指向你自己的请求模块，即可覆盖所有生成 API 调用的 axios 默认属性（baseURL、timeout、headers）。",
   "story.customHttp.sectionConfig": "1. 配置",
@@ -60,7 +55,6 @@
   "story.customHttp.defaultsProperty": "属性",
   "story.customHttp.defaultsDefault": "默认（模板）",
   "story.customHttp.defaultsCustom": "自定义（swagger-request.ts）",
-
   "story.api.title": "API 用法",
   "story.api.description": "在构建流程中以 Node.js 模块方式使用 swagger-api-hub。",
   "story.api.generate": "generate(config)",
@@ -69,9 +63,10 @@
   "story.api.promptToGenerateDesc": "传入多个服务时显示交互式提示。",
   "story.api.importLine": "import { generate, promptToGenerate } from '@tiny-codes/swagger-api-hub';",
   "story.api.inlineSpec": "也可以直接传入 spec 对象，而不用 url/input：",
-
   "story.meta.cliUsage": "swagger-api-hub CLI 的交互式终端演示：默认配置、自定义配置路径、帮助与版本。",
   "story.meta.configExamples": "典型 ServiceConfig 示例：单服务、多服务、自定义 http 客户端与高级选项。",
   "story.meta.generatedOutput": "生成代码结构预览：模块化文件（api.ts、data-contracts.ts、http-client.ts、route-types.ts）位于输出目录下。",
-  "story.meta.apiUsage": "以 Node.js 模块方式使用 swagger-api-hub：generate() 与 promptToGenerate()。"
+  "story.meta.apiUsage": "以 Node.js 模块方式使用 swagger-api-hub：generate() 与 promptToGenerate()。",
+  "story.prevnext.prev": "上一篇",
+  "story.prevnext.next": "下一篇"
 }
