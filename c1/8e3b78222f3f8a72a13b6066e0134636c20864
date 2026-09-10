@@ -1,0 +1,28 @@
+.storybook/components/DocPageContainer.tsx
+  h_99cad05bea77d1 10-11,19,69
+.storybook/components/PrevNextNav.tsx
+  h_99cad05bea77d1 1-108
+.storybook/components/nav-config.ts
+  h_99cad05bea77d1 1-51
+.storybook/components/useStoryPageDecorator.tsx
+  h_99cad05bea77d1 10-11,29,69
+.storybook/docs/99-Changelog.mdx
+  h_99cad05bea77d1 1-6
+.storybook/locales/langs/en-US.json
+  h_99cad05bea77d1 69-71
+.storybook/locales/langs/zh-CN.json
+  h_99cad05bea77d1 69-71
+.storybook/story-styles.css
+  h_99cad05bea77d1 407-477
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c18e3b78222f3f8a72a13b6066e0134636c20864",
+  "prompts": {},
+  "humans": {
+    "h_99cad05bea77d1": {
+      "author": "Fengbao Li <shijistar@gmail.com>"
+    }
+  }
+}
